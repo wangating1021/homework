@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .red{
+            color:red;
+        }
+        .skyblue{
+            color:skyblue;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+   <div ng-controller="myCtrl">
+      姓名：<input type="text" ng-model="name">
+          <p>你的姓名为：{{name}}</p>
+   </div>
+   <div ng-controller="logoCtrl">
+       <input type="text" placeholder="请输入用户名" ng-model="user">
+       <input type="button" value="提交" ng-click="showName()"><br>
+       <p>{{user}}</p>
+
+       <p ng-class="flag">this is Angular Js</p>
+       <p ng-class="flags">this is Angular Js</p>
+       <ul>
+          <li ng-repeat="item in arr">
+              {{"姓名："+item.name +'  &nbsp;&nbsp;年龄：'+ item.age}}
+          </li>
+      </ul>
+       <input type="checkbox" ng-model="myCheck">
+       <div ng-show="myCheck">
+          <h1>Hello Word!</h1>
+       </div>
+   </div>
+   <div ng-init="quantity=1;price=6">
+      数量： <input type="number" ng-model="quantity"><br>
+      价格：<input type="number" ng-model="price">
+       <p><b>总价：</b>{{quantity * price}}</p>
+   </div>
+</body>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript">
+     //控制器：
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl",function($scope){
+       $scope.name = "张三"
+    })
+
+    app.controller("logoCtrl",function($scope){
+       $scope.user ="李四",
+       $scope.showName=function(){
+           console.log($scope.user)
+       },
+       $scope.flag="red",
+       $scope.flags="skyblue",
+       $scope.arr=[
+           {
+               name:"张三",
+               age:"18"
+           },
+           {
+               name:"李四",
+               age:"38"
+           },
+           {
+               name:"王五",
+               age:"29"
+           }
+       ]
+    })
+</script>
+</html>
